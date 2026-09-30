@@ -1,76 +1,48 @@
-# 📰 Detecção de Fake News — Bloomberg Style
+# Detector de Fake News
 
-> Classificação automática de notícias falsas em português com Python e Machine Learning.
+Projeto em Python que classifica notícias em português como verdadeiras ou falsas. Fiz na faculdade para praticar NLP e machine learning na prática.
 
----
+Você cola o texto de uma notícia e o programa diz se ela parece verdadeira ou falsa.
 
-## 📌 Sobre o Projeto
+## Como funciona
 
-Este projeto aplica **Processamento de Linguagem Natural (NLP)** e **Machine Learning** para classificar notícias em português como verdadeiras ou falsas.
+O modelo foi treinado com o [Fake.br Corpus](https://github.com/roneysco/Fake.br-Corpus), um conjunto de notícias em português brasileiro criado pela USP, dividido em duas classes: `fake` e `true`.
 
-O modelo é treinado sobre o **Fake.br Corpus** (USP) e exposto via interface em `main.py`. O usuário insere o texto de uma notícia e recebe a classificação em tempo real.
+No notebook `treinamento_do_modelo.ipynb` eu limpo os textos, transformo em números com TF-IDF e treino o classificador ([algoritmo usado]). O modelo e o vetorizador ficam salvos em `modelo.pkl` e `tfidf.pkl`, e o `main.py` carrega os dois para classificar textos novos.
 
----
-
-## 🗂️ Dataset
-
-**Fake.br Corpus** — desenvolvido pela Universidade de São Paulo (USP)  
-🔗 https://github.com/roneysco/Fake.br-Corpus
-
-- Notícias em **português brasileiro**
-- Duas classes: `fake` e `true`
-
----
-
-## 🛠️ Tecnologias
-
-| Camada | Tecnologia |
-|---|---|
-| Linguagem | Python 3.x |
-| Treinamento | Jupyter Notebook |
-| Vetorização | TF-IDF (`tfidf.pkl`) |
-| Modelo | Classificador serializado (`modelo.pkl`) |
-
----
-
-## 📁 Estrutura
+## Arquivos
 
 ```
 Projeto/
-├── main.py                    # Interface principal — execute este arquivo
-├── prever.py                  # Lógica de predição
-├── modelo.pkl                 # Modelo treinado
-├── tfidf.pkl                  # Vetorizador TF-IDF
-└── treinamento_do_modelo.ipynb # Notebook de treinamento do modelo
+├── main.py                       # programa principal, é este que você roda
+├── prever.py                     # função que faz a previsão
+├── modelo.pkl                    # modelo treinado
+├── tfidf.pkl                     # vetorizador TF-IDF
+└── treinamento_do_modelo.ipynb   # treino do modelo
 ```
 
----
+## Como rodar
 
-## 📊 Pipeline
-
-```
-Fake.br Corpus (USP)
-        ↓
-  treinamento_do_modelo.ipynb
-  (pré-processamento + TF-IDF + treino)
-        ↓
-  modelo.pkl + tfidf.pkl
-  (artefatos serializados)
-        ↓
-  main.py
-  (interface de classificação)
+```bash
+git clone https://github.com/miguelrdias1/ProjetoPythonBloombergFakeNews.git
+cd ProjetoPythonBloombergFakeNews/Projeto
+pip install scikit-learn pandas
+python main.py
 ```
 
----
+Depois é só colar o texto da notícia.
 
-## 👤 Autor
+## Resultados
 
-**Miguel Dias**  
-Estudante de Tecnologia da Informação — Instituto Mauá de Tecnologia (IMT)  
-🔗 [github.com/miguelrdias1](https://github.com/miguelrdias1)
+- Acurácia: [preencher]
+- F1-score: [preencher]
 
----
+## Limitações
 
-## 📄 Licença
+O modelo só conhece o que viu no Fake.br, então pode errar em notícias de outros temas ou de outra época. Também não é um substituto para checar a informação em fontes confiáveis, é só um projeto de estudo.
 
-Projeto acadêmico. Dataset sujeito aos termos do [Fake.br Corpus](https://github.com/roneysco/Fake.br-Corpus).
+## Autor
+
+Miguel Ribeiro Dias, estudante de Ciência da Computação no Instituto Mauá de Tecnologia.
+
+[LinkedIn](https://www.linkedin.com/in/miguel-ribeiro-dias-184819402) | [GitHub](https://github.com/miguelrdias1)
